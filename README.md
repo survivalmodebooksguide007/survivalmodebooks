@@ -9,8 +9,7 @@ The page sells the PDF and captures email leads (free Chapter 1 download).
 ## 🎯 Project Goal
 
 Convert visitors into either:
-1. **Email leads** — via free Chapter 1 PDF download (top of funnel)
-2. **Buyers** — direct PDF purchase at **$17** with promo code `SURVIVALMODE` ($10 off the $27 regular price)
+. **Buyers** — direct PDF purchase at **$17** with promo code `SURVIVALMODE` ($10 off the $27 regular price)
 
 ---
 
