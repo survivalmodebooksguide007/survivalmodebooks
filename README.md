@@ -2,7 +2,7 @@
 
 A high-conversion landing page for the PDF book **"The Invisible Shelter Playbook · Field Edition Vol. 01"** by the YouTube channel [Survival Mode](https://youtube.com/@SurvivalMode).
 
-The page sells the PDF and captures email leads (free Chapter 1 download).
+The page sells the PDF (free Chapter 1 download).
 
 ---
 
