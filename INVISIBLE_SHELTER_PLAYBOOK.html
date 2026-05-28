@@ -1,0 +1,2957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Invisible Shelter Playbook · Field Edition Vol. 01 · Survival Mode</title>
+<meta name="description" content="Stay warmer in extreme cold. Stay invisible in a vehicle. Build emergency shelter systems for under $50. Field-tested, documented methods from Survival Mode." />
+
+<!-- ============ FAVICON (compass rose · brass on navy) ============ -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A1628'/%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%23C9892E' stroke-width='1.5'/%3E%3Cpolygon points='16,3 19,16 16,29 13,16' fill='%23C9892E'/%3E%3Cpolygon points='3,16 16,13 29,16 16,19' fill='%23C9892E' opacity='0.5'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23E8DCC4'/%3E%3C/svg%3E" />
+
+<!-- ============ OPEN GRAPH ============ -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The Invisible Shelter Playbook · Field Edition Vol. 01" />
+<meta property="og:description" content="Stay warmer in extreme cold. Stay invisible in a vehicle. Build emergency shelter systems for under $50. Field-tested, documented methods from Survival Mode." />
+<meta property="og:image" content="https://i.imgur.com/gpk2cEt.jpeg" />
+<meta property="og:url" content="https://invisibleshelter.com" />
+<meta property="og:site_name" content="Survival Mode" />
+
+<!-- ============ TWITTER / X CARD ============ -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Invisible Shelter Playbook · Field Edition Vol. 01" />
+<meta name="twitter:description" content="Stay warmer in extreme cold. Stay invisible in a vehicle. Build emergency shelter systems for under $50. Field-tested, documented methods from Survival Mode." />
+<meta name="twitter:image" content="https://i.imgur.com/gpk2cEt.jpeg" />
+<meta name="twitter:site" content="TWITTER_HANDLE_HERE" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Special+Elite&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ RESET & FOUNDATION ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    cursor: auto;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background: #0A1628;
+    color: #E8DCC4;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :root {
+    --navy-deep: #0A1628;
+    --navy: #122236;
+    --navy-light: #1A2F4A;
+    --brass: #C9892E;
+    --brass-bright: #E5A445;
+    --brass-dim: #8B5E1E;
+    --bone: #E8DCC4;
+    --bone-bright: #F5EBD3;
+    --orange-stamp: #E55A2B;
+    --orange-stamp-dark: #B8431D;
+    --cyan-blueprint: #4FA8C7;
+    --red-alert: #C73E3E;
+    --green-go: #6B9B5A;
+  }
+
+  /* ============ BACKGROUND ATMOSPHERICS ============ */
+  .topo-bg { display: none; }
+  .topo-lines { display: none; }
+  .blueprint-grid { display: none; }
+  .grain { display: none; }
+  /* U7: Drifting grain layer (hero only, slightly stronger) */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    background-image: none;
+    opacity: 0;
+    z-index: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero::after { display: none; }
+  }
+
+  /* ============ TYPOGRAPHY ============ */
+  .display {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 0.95;
+  }
+  .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+  }
+  .stencil {
+    font-family: 'Special Elite', monospace;
+    letter-spacing: 0.05em;
+  }
+  .data { font-family: 'JetBrains Mono', monospace; }
+
+  /* ============ LAYOUT ============ */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+  }
+  section { position: relative; padding: 6rem 0; }
+  /* content-visibility removed — was causing layout jumps */
+
+  /* ============ NAV ============ */
+  nav.topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    background: linear-gradient(180deg, rgba(10,22,40,0.98) 0%, rgba(10,22,40,0.93) 100%);
+    border-bottom: 1px solid rgba(201, 137, 46, 0.2);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+    padding: 1rem 0;
+  }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    color: var(--bone);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .nav-logo .dot {
+    width: 8px; height: 8px;
+    background: var(--orange-stamp);
+    border-radius: 50%;
+    /* animation removed */
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--brass) 0%, var(--brass-bright) 100%);
+    color: var(--navy-deep);
+    padding: 0.6rem 1.4rem;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border: 1px solid var(--brass-bright);
+    transition: color 0.2s ease, opacity 0.2s ease;
+    box-shadow: 0 2px 10px rgba(201, 137, 46, 0.28);
+  }
+  .nav-cta:hover {
+    background: linear-gradient(135deg, var(--brass-bright) 0%, #F5B84E 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(229, 164, 69, 0.45);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(229, 90, 43, 0.1);
+    border: 1px solid var(--orange-stamp);
+    color: var(--orange-stamp);
+    padding: 0.4rem 1rem;
+    margin-bottom: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .hero-stamp .pulse-dot {
+    width: 6px; height: 6px;
+    background: var(--orange-stamp);
+    border-radius: 50%;
+    /* animation removed */
+  }
+  h1.hero-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    line-height: 0.9;
+    color: var(--bone-bright);
+    letter-spacing: 0.01em;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+  }
+  /* Word-by-word hero animation */
+  @keyframes word-rise {
+    from { opacity: 0; transform: translateY(40px); filter: blur(8px); }
+    to   { opacity: 1; transform: translateY(0);   filter: blur(0px); }
+  }
+  .hero-word {
+    display: inline-block;
+    opacity: 0;
+  }
+  .hero-word.word-in {
+    animation: word-rise 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  /* Looping brass underline on "Playbook" */
+  @keyframes brass-draw {
+    0%   { width: 0%;   left: 0; }
+    45%  { width: 100%; left: 0; }
+    55%  { width: 100%; left: 0; }
+    100% { width: 0%;   left: 100%; }
+  }
+  .hero-title .highlight {
+    position: relative;
+    display: inline-block;
+  }
+  .hero-title .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--brass-bright);
+    border-radius: 2px;
+    /* animation removed */
+    width: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-word { opacity: 1; animation: none; }
+    .hero-title .highlight::after { animation: none; width: 100%; }
+  }
+  h1.hero-title .highlight {
+    color: var(--brass-bright);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(232, 220, 196, 0.85);
+    margin-bottom: 2rem;
+    max-width: 540px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(201, 137, 46, 0.25);
+    border-bottom: 1px solid rgba(201, 137, 46, 0.25);
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .hero-meta-item .num {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--brass-bright);
+  }
+  .hero-meta-item .lab {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(232, 220, 196, 0.6);
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 1.8rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1.5px solid;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--brass) 0%, var(--brass-bright) 55%, var(--brass) 100%);
+    color: var(--navy-deep);
+    border-color: var(--brass-bright);
+    overflow: hidden;
+    cursor: crosshair;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      0 0 0 1px var(--brass),
+      0 4px 14px rgba(201, 137, 46, 0.4),
+      0 8px 30px rgba(201, 137, 46, 0.2);
+    /* animation removed */
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -75%;
+    width: 50%; height: 200%;
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 70%
+    );
+    /* animation removed */
+    pointer-events: none;
+  }
+  @keyframes btn-glow-pulse {
+    0%, 100% {
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.18),
+        0 0 0 1px var(--brass),
+        0 4px 14px rgba(201,137,46,0.4),
+        0 8px 30px rgba(201,137,46,0.2);
+    }
+    50% {
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.2),
+        0 0 0 1px var(--brass-bright),
+        0 4px 20px rgba(229,164,69,0.55),
+        0 12px 42px rgba(229,164,69,0.3);
+    }
+  }
+  @keyframes btn-glow-engaged {
+    0%, 100% {
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        0 0 0 2px var(--brass-bright),
+        0 6px 28px rgba(229,164,69,0.65),
+        0 16px 56px rgba(229,164,69,0.4);
+      transform: scale(1.03);
+    }
+    50% {
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.28),
+        0 0 0 2px var(--brass-bright),
+        0 8px 36px rgba(229,164,69,0.8),
+        0 20px 64px rgba(229,164,69,0.5);
+      transform: scale(1.05);
+    }
+  }
+  .btn-primary.btn-engaged {
+    /* animation removed */
+  }
+  @media (prefers-reduced-motion: reduce) { .btn-primary.btn-engaged { animation: none; } }
+  @keyframes btn-shimmer {
+    0%   { left: -75%; opacity: 1; }
+    22%  { left: 125%; opacity: 1; }
+    23%, 100% { left: 125%; opacity: 0; }
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--brass-bright) 0%, #F5B84E 50%, var(--brass-bright) 100%);
+    border-color: var(--brass-bright);
+    transform: translateY(-2px) scale(1.02);
+    animation: none;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.24),
+      0 0 0 1px var(--brass-bright),
+      0 6px 24px rgba(229,164,69,0.6),
+      0 14px 44px rgba(229,164,69,0.35);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--bone);
+    border-color: rgba(232, 220, 196, 0.4);
+  }
+  .btn-secondary:hover {
+    border-color: var(--bone);
+    background: rgba(232, 220, 196, 0.05);
+  }
+  .btn-arrow { transition: transform 0.2s ease; }
+  .btn:hover .btn-arrow { transform: translateX(4px); }
+
+  /* ============ HERO BOOK ============ */
+  .hero-book-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    will-change: transform;
+    min-width: 0;
+  }
+  .hero-book {
+    max-width: 100%;
+    width: 580px;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+    animation: float 6s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-12px) rotate(0deg); }
+  }
+  .book-stamp-floating {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--orange-stamp);
+    color: var(--navy-deep);
+    padding: 0.6rem 1rem;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transform: rotate(8deg);
+    z-index: 3;
+    border: 2px solid var(--navy-deep);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+  .compass-overlay {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 130px;
+    height: 130px;
+    opacity: 0.4;
+    z-index: 3;
+    animation: rotate 60s linear infinite;
+    backface-visibility: hidden;
+  }
+  @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* ============ SECTION HEADERS ============ */
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--brass);
+    margin-bottom: 1rem;
+  }
+  .section-eyebrow .dash {
+    width: 30px;
+    height: 1px;
+    background: var(--brass);
+  }
+  h2.section-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--bone-bright);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  h2.section-title .italic {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--brass-bright);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .section-lead {
+    font-size: 1.2rem;
+    color: rgba(232, 220, 196, 0.85);
+    max-width: 700px;
+    margin-bottom: 4rem;
+    line-height: 1.75;
+  }
+
+  /* ============ PROOF BAR (bento tiles) ============ */
+  .proof-bar {
+    background: transparent;
+    padding: 2rem 0;
+    position: relative;
+  }
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    text-align: center;
+  }
+  .proof-item {
+    background: linear-gradient(135deg, rgba(18,34,54,0.9) 0%, rgba(10,22,40,0.95) 100%);
+    border: 1px solid rgba(201, 137, 46, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 2px 12px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 1.75rem 1.25rem;
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .proof-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(201,137,46,0.5);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.3), 0 0 16px rgba(201,137,46,0.1);
+  }
+  /* Vary shade slightly per tile for visual rhythm */
+  .proof-item:nth-child(1) { background: linear-gradient(135deg, rgba(20,38,58,0.97) 0%, rgba(12,26,44,0.98) 100%); }
+  .proof-item:nth-child(2) { background: linear-gradient(135deg, rgba(16,30,50,0.93) 0%, rgba(10,22,40,0.97) 100%); }
+  .proof-item:nth-child(3) { background: linear-gradient(135deg, rgba(18,34,54,0.95) 0%, rgba(11,24,42,0.98) 100%); }
+  .proof-item:nth-child(4) { background: linear-gradient(135deg, rgba(15,28,46,0.91) 0%, rgba(10,22,40,0.96) 100%); }
+  .proof-num {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 2.6rem;
+    color: var(--brass-bright);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(201,137,46,0.35);
+  }
+  .proof-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(232, 220, 196, 0.65);
+  }
+  @media (max-width: 640px) {
+    .proof-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ============ COUNTER-INDUSTRY SECTION ============ */
+  .counter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .counter-card {
+    background: rgba(18, 34, 54, 0.6);
+    border: 1px solid rgba(201, 137, 46, 0.2);
+    padding: 2rem 1.75rem;
+    position: relative;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .counter-card:hover {
+    border-color: var(--brass);
+    transform: translateY(-4px);
+    background: rgba(18, 34, 54, 0.9);
+  }
+  .counter-card .corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: var(--brass);
+  }
+  .counter-card .corner.tl { top: 8px; left: 8px; border-top: 1px solid; border-left: 1px solid; }
+  .counter-card .corner.tr { top: 8px; right: 8px; border-top: 1px solid; border-right: 1px solid; }
+  .counter-card .corner.bl { bottom: 8px; left: 8px; border-bottom: 1px solid; border-left: 1px solid; }
+  .counter-card .corner.br { bottom: 8px; right: 8px; border-bottom: 1px solid; border-right: 1px solid; }
+  .counter-card .industry {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange-stamp);
+    margin-bottom: 0.5rem;
+  }
+  .counter-card .value {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--brass-bright);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .counter-card h4 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--bone-bright);
+    margin-bottom: 0.8rem;
+  }
+  .counter-card p {
+    color: rgba(232, 220, 196, 0.88);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  /* ============ CHAPTERS BENTO GRID ============ */
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(160px, auto);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  /* Default: 3-col span */
+  .chapter { grid-column: span 3; }
+  /* Hero tiles: Ch02 + Ch08 span 6 cols */
+  .chapter.chapter-hero { grid-column: span 6; }
+  /* Small accent tiles: Ch04 + Ch07 span 3 cols but shorter */
+  .chapter.chapter-sm { grid-column: span 3; }
+
+  .chapter {
+    background: linear-gradient(145deg, rgba(20,38,58,0.95) 0%, rgba(10,22,40,0.98) 100%);
+    border: 1px solid rgba(201, 137, 46, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 4px 16px rgba(0,0,0,0.25);
+    border-radius: 12px;
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s ease, border-color 0.28s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .chapter::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,137,46,0.07) 0%, transparent 60%);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.28s ease;
+    pointer-events: none;
+  }
+  .chapter:hover {
+    border-color: rgba(201, 137, 46, 0.55);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(201,137,46,0.12);
+  }
+  .chapter:hover::before { opacity: 1; }
+  .chapter-hero {
+    background: rgba(18, 34, 54, 0.7);
+    border-color: rgba(201, 137, 46, 0.3);
+  }
+  .chapter-hero:hover {
+    box-shadow: 0 16px 56px rgba(0,0,0,0.5), 0 0 32px rgba(201,137,46,0.2);
+  }
+  .chapter-num {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--brass);
+    line-height: 0.85;
+    opacity: 0.55;
+    letter-spacing: -0.02em;
+  }
+  .chapter-hero .chapter-num { font-size: 3.5rem; opacity: 0.7; }
+  .chapter-content { flex: 1; }
+  .chapter h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--bone-bright);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  .chapter-hero h3 { font-size: 1.3rem; }
+  .chapter p {
+    color: rgba(232, 220, 196, 0.82);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+  .chapter-hero p { font-size: 1.1rem; color: rgba(232, 220, 196, 0.88); }
+  @media (max-width: 968px) {
+    .chapters-grid { grid-template-columns: repeat(6, 1fr); }
+    .chapter { grid-column: span 3; }
+    .chapter.chapter-hero { grid-column: span 6; }
+  }
+  @media (max-width: 580px) {
+    .chapters-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; }
+    .chapter, .chapter.chapter-hero, .chapter.chapter-sm { grid-column: span 2; }
+  }
+
+  /* ============ FIELD SCENARIOS ============ */
+  .scenarios { background: var(--navy); position: relative; }
+  /* DECLASSIFIED stamp on each scenario */
+  .scenario-stamp {
+    position: absolute;
+    top: 1.25rem; right: 1.25rem;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    color: var(--orange-stamp);
+    border: 2px solid var(--orange-stamp);
+    padding: 0.2rem 0.7rem;
+    transform: rotate(6deg);
+    opacity: 0.75;
+    pointer-events: none;
+    text-transform: uppercase;
+  }
+  /* Status indicator dots */
+  .status-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 0.45rem;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  .status-dot.red  { background: var(--red-alert);  box-shadow: 0 0 6px rgba(199,62,62,0.6); }
+  .status-dot.green { background: var(--green-go); box-shadow: 0 0 6px rgba(107,155,90,0.6); }
+  /* Outcome result stamp */
+  .scenario-outcome {
+    border: 1px solid rgba(201,137,46,0.4);
+    background: rgba(18,34,54,0.7);
+    border-radius: 4px;
+    padding: 1rem 1.25rem 1rem 1rem;
+  }
+  .scenarios::before {
+    content: 'CLASSIFIED · FIELD ARCHIVE';
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: rgba(229, 90, 43, 0.5);
+    border: 1px solid rgba(229, 90, 43, 0.4);
+    padding: 0.3rem 0.7rem;
+  }
+  .scenario {
+    border: 1px solid rgba(201, 137, 46, 0.3);
+    background: rgba(10, 22, 40, 0.6);
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .scenario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px dashed rgba(201, 137, 46, 0.3);
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .scenario-id {
+    font-family: 'Special Elite', monospace;
+    color: var(--orange-stamp);
+    letter-spacing: 0.1em;
+    font-size: 1.1rem;
+  }
+  .scenario-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(232, 220, 196, 0.6);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .scenario-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .scenario-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brass);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .scenario-col p {
+    color: rgba(232, 220, 196, 0.92);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+  .scenario-outcome {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(201, 137, 46, 0.3);
+    color: var(--brass-bright);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.1rem;
+    line-height: 1.65;
+    letter-spacing: 0.02em;
+  }
+  .scenario-outcome::before {
+    content: '→ ';
+    color: var(--orange-stamp);
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  /* ============ CITIES BENTO GRID ============ */
+  .cities-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  /* LA: feature tile — 6 cols */
+  .city:nth-child(1) { grid-column: span 6; }
+  /* Houston + Miami: 3 cols each */
+  .city:nth-child(2), .city:nth-child(3) { grid-column: span 3; }
+  /* NYC: 4 cols, Columbus: 4 cols, Bonus: 4 cols */
+  .city:nth-child(4), .city:nth-child(5), .city:nth-child(6) { grid-column: span 4; }
+
+  .city {
+    background: linear-gradient(145deg, rgba(18,34,54,0.96) 0%, rgba(10,22,40,0.99) 100%);
+    border: 1px solid rgba(201, 137, 46, 0.22);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 4px 16px rgba(0,0,0,0.25);
+    border-radius: 12px;
+    padding: 1.75rem;
+    position: relative;
+    transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s ease, border-color 0.28s ease;
+    overflow: hidden;
+  }
+  .city::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(201,137,46,0.06) 0%, transparent 55%);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.28s ease;
+    pointer-events: none;
+  }
+  .city:hover {
+    border-color: rgba(201,137,46,0.55);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 18px rgba(201,137,46,0.1);
+  }
+  .city:hover::before { opacity: 1; }
+  /* LA gets a stronger treatment */
+  .city:nth-child(1) { border-color: rgba(201,137,46,0.32); background: rgba(18,34,54,0.7); }
+  .city:nth-child(1) h3 { font-size: 1.7rem; }
+  @media (max-width: 968px) {
+    .cities-grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: auto; }
+    .city:nth-child(1) { grid-column: span 6; }
+    .city:nth-child(2), .city:nth-child(3) { grid-column: span 3; }
+    .city:nth-child(4), .city:nth-child(5), .city:nth-child(6) { grid-column: span 3; }
+  }
+  @media (max-width: 580px) {
+    .cities-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; }
+    .city, .city:nth-child(1), .city:nth-child(2), .city:nth-child(3),
+    .city:nth-child(4), .city:nth-child(5), .city:nth-child(6) { grid-column: span 2; }
+  }
+  .city:hover { border-color: var(--brass); transform: translateY(-3px); }
+  .city-marker {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: var(--orange-stamp);
+    border-radius: 50%;
+    margin-right: 0.6rem;
+    box-shadow: 0 0 0 4px rgba(229, 90, 43, 0.2);
+  }
+  .city-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--brass);
+    margin-bottom: 0.5rem;
+  }
+  .city h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--bone-bright);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.02em;
+  }
+  .city .viewers {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--orange-stamp);
+    margin-bottom: 1rem;
+  }
+  .city .resources {
+    list-style: none;
+    border-top: 1px solid rgba(201, 137, 46, 0.2);
+    padding-top: 1rem;
+  }
+  .city .resources li {
+    color: rgba(232, 220, 196, 0.88);
+    font-size: 1rem;
+    padding: 0.35rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .city .resources li::before {
+    content: '◦';
+    color: var(--brass);
+    font-size: 1.2rem;
+  }
+
+  /* ============ GUARANTEE ============ */
+  .guarantee {
+    border: 1px dashed var(--brass);
+    padding: 3rem;
+    text-align: center;
+    background: rgba(18, 34, 54, 0.4);
+    position: relative;
+  }
+  .guarantee-seal {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    border: 2px solid var(--brass);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brass);
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    line-height: 1;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+  .guarantee h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--bone-bright);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .guarantee p {
+    color: rgba(232, 220, 196, 0.92);
+    font-size: 1.15rem;
+    line-height: 1.75;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    background: var(--navy);
+    border-top: 1px solid rgba(201, 137, 46, 0.3);
+    padding: 6rem 0;
+    text-align: center;
+    position: relative;
+  }
+  .final-cta h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--bone-bright);
+    text-transform: uppercase;
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.01em;
+  }
+  .final-cta h2 .italic {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    text-transform: none;
+    color: var(--brass-bright);
+    letter-spacing: 0;
+  }
+  .final-cta-sub {
+    font-size: 1.2rem;
+    color: rgba(232, 220, 196, 0.75);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+  .price-block {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .price-was {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+    color: rgba(232, 220, 196, 0.4);
+    text-decoration: line-through;
+  }
+  .price-now {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 4rem;
+    color: var(--brass-bright);
+    line-height: 1;
+  }
+  .price-now sup {
+    font-size: 2rem;
+    margin-right: 0.2rem;
+  }
+  .btn-massive {
+    padding: 1.4rem 3rem;
+    font-size: 1.1rem;
+  }
+
+  /* ============ PROMO CODE BLOCK ============ */
+  .promo-code-block {
+    display: inline-block;
+    margin: 0 auto 2.5rem;
+    padding: 1.5rem 2rem;
+    background: rgba(229, 90, 43, 0.08);
+    border: 1.5px dashed var(--orange-stamp);
+    position: relative;
+  }
+  .promo-code-block::before {
+    content: '★';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--navy);
+    color: var(--orange-stamp);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .promo-code-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(232, 220, 196, 0.6);
+    margin-bottom: 0.75rem;
+  }
+  .promo-code-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: stretch;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+  .promo-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--bone-bright);
+    background: rgba(10, 22, 40, 0.8);
+    border: 1px solid var(--brass);
+    padding: 0.75rem 1.5rem;
+    user-select: all;
+  }
+  .promo-copy {
+    background: var(--brass);
+    color: var(--navy-deep);
+    border: none;
+    padding: 0 1.25rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: color 0.2s ease, opacity 0.2s ease;
+    min-width: 80px;
+  }
+  .promo-copy:hover { background: var(--brass-bright); }
+  .promo-copy.copied { background: var(--green-go); color: var(--bone-bright); }
+  .promo-code-save {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    color: var(--orange-stamp);
+    text-transform: uppercase;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--navy-deep);
+    border-top: 1px solid rgba(201, 137, 46, 0.2);
+    padding: 3rem 0 2rem;
+    text-align: center;
+  }
+  footer .footer-logo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--bone-bright);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  footer .footer-yt {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brass);
+    font-size: 0.95rem;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  footer .footer-yt:hover { color: var(--brass-bright); }
+  footer .footer-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: rgba(232, 220, 196, 0.4);
+    letter-spacing: 0.15em;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  /* ============ SCROLL PROGRESS BAR ============ */
+  #scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--brass) 0%, var(--brass-bright) 100%);
+    z-index: 200;
+    pointer-events: none;
+    transition: width 0.1s linear;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #scroll-progress { transition: none; }
+  }
+
+  /* ============ COUNTDOWN BANNER (top of page) ============ */
+  .banner-slot {
+    position: relative;
+    min-height: 1.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .banner-msg {
+    display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; justify-content: center;
+    position: absolute; inset: 0; justify-content: center; align-items: center;
+    opacity: 0; transition: opacity 0.35s ease; pointer-events: none;
+    width: 100%;
+  }
+  .banner-msg.banner-msg-active {
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+    inset: auto;
+  }
+  @keyframes banner-breathe {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.92; }
+  }
+  @keyframes alert-pulse {
+    0%, 100% { transform: scale(1);   opacity: 1; }
+    40%       { transform: scale(1.3); opacity: 0.7; }
+    60%       { transform: scale(1.2); opacity: 0.9; }
+  }
+  .countdown-banner {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    isolation: isolate;
+  }
+  .classification-row {
+    background: rgb(5, 12, 24);
+    border-bottom: 1px solid rgba(201, 137, 46, 0.22);
+    height: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+  .classification-scroll {
+    display: inline-block;
+    font-size: 0.58rem;
+    color: var(--brass);
+    letter-spacing: 0.14em;
+    /* marquee animation removed - static display */
+    padding-left: 2rem;
+  }
+  @keyframes classification-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .countdown-row {
+    background-color: var(--orange-stamp);
+    /* animation removed */
+    color: var(--bone-bright);
+    padding: 1rem 1.25rem;
+    text-align: center;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.4rem;
+    line-height: 1.5;
+  }
+  .countdown-banner .alert-dot {
+    display: inline-block;
+    margin-right: 0.25rem;
+    /* animation removed */
+    transform-origin: center;
+  }
+  .countdown-banner .timer {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    padding: 0.2rem 0.6rem;
+    margin: 0 0.15rem;
+    border-radius: 3px;
+    box-shadow: 0 0 6px rgba(255, 120, 50, 0.55), inset 0 1px 0 rgba(255,255,255,0.1);
+    letter-spacing: 0.05em;
+  }
+  .banner-code {
+    font-weight: 700;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.28);
+    padding: 0.1rem 0.5rem;
+    border-radius: 2px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.1em;
+  }
+  /* Push nav down: classification row 22px + countdown row ~58px = 80px */
+  nav.topbar { top: 80px; }
+  body { padding-top: 80px; }
+  @media (prefers-reduced-motion: reduce) {
+    .countdown-row  { animation: none; }
+    .countdown-banner .alert-dot { animation: none; }
+  }
+
+  /* ============ COUNTDOWN BLOCK (premium horizontal HH:MM:SS) ============ */
+  .countdown-block {
+    border-top: 1px solid rgba(201, 137, 46, 0.3);
+    border-bottom: 1px solid rgba(201, 137, 46, 0.3);
+    padding: 1.5rem 2rem 1.75rem;
+    text-align: center;
+    margin: 2rem auto 2.5rem;
+    max-width: 680px;
+    background: transparent;
+  }
+  .countdown-block-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--brass);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    font-variant: small-caps;
+  }
+  .countdown-digits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+  .countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 90px;
+  }
+  .countdown-unit .digit {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--bone-bright);
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    border: 1px solid rgba(201, 137, 46, 0.4);
+    border-radius: 4px;
+    padding: 0.85rem 1.2rem;
+    min-width: 90px;
+    text-align: center;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .countdown-unit .unit-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-top: 0.5rem;
+    opacity: 0.8;
+  }
+  .cd-colon {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--brass);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    transition: opacity 0.15s;
+    user-select: none;
+  }
+  .cd-colon.blink { opacity: 0.15; }
+
+  /* ============ FAQ SECTION ============ */
+  .faq-list {
+    max-width: 820px;
+    margin: 3rem auto 0;
+  }
+  .faq-item {
+    border: 1px solid rgba(201, 137, 46, 0.2);
+    background: rgba(18, 34, 54, 0.4);
+    margin-bottom: 1rem;
+    transition: background 0.3s ease;
+  }
+  .faq-item.open {
+    border-color: var(--brass);
+    background: rgba(18, 34, 54, 0.7);
+  }
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--bone-bright);
+    padding: 1.5rem 1.75rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    text-align: left;
+    transition: color 0.2s ease;
+  }
+  .faq-question:hover { color: var(--brass-bright); }
+  .faq-toggle {
+    color: var(--brass);
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); color: var(--orange-stamp); }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 1.75rem;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 500px;
+    padding: 0 1.75rem 1.5rem;
+  }
+  .faq-answer p {
+    color: rgba(232, 220, 196, 0.8);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+  .faq-answer strong { color: var(--brass-bright); }
+
+  /* ============ RESPONSIVE ============ */
+
+  /* ---- Tablet / small laptop (≤968px) ---- */
+  @media (max-width: 968px) {
+    section { padding: 4rem 0; }
+    .final-cta { padding: 4rem 0; }
+    .container { padding: 0 1.25rem; }
+    .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
+    .proof-item:nth-child(2)::after { display: none; }
+    .counter-grid { grid-template-columns: 1fr; }
+    .chapters-grid { grid-template-columns: 1fr; }
+    .cities-grid { grid-template-columns: repeat(2, 1fr); }
+    .scenario-body { grid-template-columns: 1fr; }
+    .compass-overlay { display: none; }
+    .scenarios::before { display: none; }
+    .guarantee { padding: 2.5rem 1.75rem; }
+  }
+
+  /* ---- Hero: single column below 768px, book cover above text ---- */
+  @media (max-width: 768px) {
+    .hero { padding-top: 6rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-book-wrap { order: -1; }
+    .hero-book { width: 300px; }
+    .hero-immediate-btn { display: flex; width: 100%; }
+  }
+
+  /* ---- Countdown banner: hide promo-code text to prevent overflow ---- */
+  @media (max-width: 640px) {
+    .banner-extra { display: none; }
+  }
+
+  /* ---- Mobile (≤580px) ---- */
+  @media (max-width: 580px) {
+    section { padding: 3rem 0; }
+    .final-cta { padding: 3rem 0; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .proof-item::after { display: none; }
+    .chapter { flex-direction: column; gap: 0.8rem; padding: 1.5rem; }
+    .chapter-num { font-size: 2.2rem; min-width: auto; }
+    .city { padding: 1.25rem; }
+    .scenario { padding: 1.5rem; }
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .btn { justify-content: center; }
+    .btn-massive { display: flex; width: 100%; }
+    .cities-grid { grid-template-columns: 1fr; }
+    .hero-subtitle { font-size: 1.05rem; }
+    .section-lead { font-size: 1rem; margin-bottom: 2.5rem; }
+    .hero-meta { gap: 1rem; }
+    .price-now { font-size: 3rem; }
+    .price-was { font-size: 1.1rem; }
+    .guarantee { padding: 1.5rem 1.25rem; }
+    .guarantee h3 { font-size: 1.4rem; }
+    .countdown-banner { font-size: 0.78rem; }
+    .countdown-row { padding: 0.85rem 0.75rem; }
+    .countdown-banner .timer { font-size: 0.88rem; padding: 0.15rem 0.45rem; margin: 0 0.1rem; }
+    .countdown-digits { gap: 0.5rem; }
+    .countdown-unit { min-width: 60px; }
+    .countdown-unit .digit { font-size: 2.2rem; min-width: 60px; padding: 0.7rem 0.5rem; }
+    .faq-question { font-size: 0.95rem; padding: 1.25rem; }
+    .faq-answer { padding: 0 1.25rem; }
+    .faq-item.open .faq-answer { padding: 0 1.25rem 1.25rem; }
+    .faq-answer p { font-size: 1.05rem; }
+    .promo-code-block { padding: 1.25rem 1rem; display: block; width: 100%; box-sizing: border-box; }
+    .promo-code { font-size: 1.1rem; padding: 0.6rem 0.75rem; letter-spacing: 0.1em; }
+    .promo-copy { min-width: 65px; }
+    .sticky-bar-inner { gap: 1rem; }
+    .sticky-cta { padding: 0.7rem 1.1rem; font-size: 0.8rem; }
+    .sticky-title { font-size: 0.95rem; }
+    .sticky-subtitle { display: none; }
+    .nav-logo { font-size: 0.82rem; }
+    .nav-cta { padding: 0.5rem 1rem; font-size: 0.75rem; }
+    .book-stamp-floating { right: 0; top: 0; font-size: 0.75rem; padding: 0.4rem 0.7rem; }
+  }
+
+  /* ---- Very small mobile (≤400px) ---- */
+  @media (max-width: 400px) {
+    h1.hero-title { font-size: 2.4rem; }
+    .final-cta h2 { font-size: 2rem; }
+    .hero-book { width: 220px; }
+    .container { padding: 0 1rem; }
+    .countdown-unit .digit { font-size: 1.8rem; min-width: 50px; padding: 0.5rem 0.4rem; }
+    .countdown-unit { min-width: 50px; }
+    .countdown-digits { gap: 0.3rem; }
+    .countdown-block { padding: 1.5rem 0.75rem; }
+    .promo-code { font-size: 0.9rem; letter-spacing: 0.07em; }
+    .promo-code-row { flex-direction: column; align-items: stretch; }
+    .promo-copy { width: 100%; padding: 0.5rem; }
+    .price-now { font-size: 2.5rem; }
+    .sticky-cta { font-size: 0.75rem; padding: 0.65rem 0.9rem; }
+  }
+
+  /* ============ REVEAL ANIMATION ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ U12: FLOATING CODE PILL ============ */
+  @keyframes pill-pulse {
+    0%, 90%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,137,46,0.4); }
+    95%            { box-shadow: 0 4px 28px rgba(0,0,0,0.5), 0 0 0 3px rgba(201,137,46,0.7), 0 0 18px rgba(201,137,46,0.3); }
+  }
+  .code-pill {
+    position: fixed;
+    bottom: 110px;
+    right: 24px;
+    z-index: 160;
+    background: rgba(10, 22, 40, 0.96);
+    border: 1px solid rgba(201,137,46,0.5);
+    border-radius: 6px;
+    padding: 0.6rem 1rem 0.6rem 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    /* animation removed */
+    transition: transform 0.2s ease, opacity 0.3s ease;
+    max-width: 240px;
+  }
+  .code-pill:hover { transform: translateY(-2px); }
+  .code-pill-star { color: var(--brass-bright); font-size: 0.9rem; flex-shrink: 0; }
+  .code-pill-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--bone-bright);
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .code-pill-text strong { color: var(--brass-bright); display: block; font-size: 0.72rem; }
+  .code-pill-dismiss {
+    background: none;
+    border: none;
+    color: rgba(232,220,196,0.3);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0 0 0 0.25rem;
+    flex-shrink: 0;
+    transition: color 0.15s;
+  }
+  .code-pill-dismiss:hover { color: rgba(232,220,196,0.7); }
+  .code-pill.pill-hidden { opacity: 0; pointer-events: none; }
+  @media (max-width: 580px) {
+    .code-pill { bottom: 90px; right: 12px; max-width: 200px; padding: 0.5rem 0.75rem 0.5rem 0.7rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .code-pill { animation: none; } }
+
+  /* ============ STICKY BUY BAR ============ */
+  .sticky-buy-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 150;
+    background: linear-gradient(180deg, rgba(8,18,34,0.99) 0%, rgba(10,22,40,1) 100%);
+    border-top: 1px solid rgba(201, 137, 46, 0.35);
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.6);
+    padding: 0.8rem 0;
+    transform: translateY(100%);
+    transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1);
+    box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.45);
+  }
+  .sticky-buy-bar.show { transform: translateY(0); }
+  .sticky-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .sticky-left { display: flex; flex-direction: column; gap: 0.2rem; }
+  .sticky-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--bone-bright);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .sticky-subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: rgba(232, 220, 196, 0.45);
+    text-transform: uppercase;
+  }
+  .sticky-hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(232, 220, 196, 0.45);
+  }
+  .sticky-hint strong { color: var(--orange-stamp); font-weight: 500; }
+  .sticky-center {
+    display: none;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(232, 220, 196, 0.45);
+    text-align: center;
+    display: none;
+  }
+  .sticky-cta { white-space: nowrap; flex-shrink: 0; }
+  .sticky-close {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: rgba(232, 220, 196, 0.2);
+    cursor: pointer;
+    font-size: 1.05rem;
+    line-height: 1;
+    padding: 4px 7px;
+    transition: color 0.2s;
+  }
+  .sticky-close:hover { color: rgba(232, 220, 196, 0.65); }
+  @media (min-width: 680px) { .sticky-center { display: block; } }
+
+  /* ============ PRICE REVEAL (dramatic 3-stage) ============ */
+  .price-reveal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 2rem;
+  }
+
+  /* Stage 1: crossed-out $27 */
+  .price-stage-1 { text-align: center; padding: 1.5rem 0 0.5rem; position: relative; }
+  .price-regular-label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(232, 220, 196, 0.38);
+    margin-bottom: 0.35rem;
+  }
+  .price-was-large {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 5rem;
+    color: rgba(232, 220, 196, 0.28);
+    line-height: 1;
+    display: inline-block;
+    position: relative;
+  }
+  .price-was-large sup { font-size: 2.2rem; vertical-align: super; }
+  .price-was-large::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: -4%; width: 108%;
+    height: 4px;
+    background: var(--brass);
+    opacity: 0.7;
+    transform: rotate(-8deg) translateY(-50%);
+    border-radius: 2px;
+  }
+
+  /* SVG vertical separator */
+  .price-vsep {
+    width: 2px;
+    height: 48px;
+    display: block;
+    margin: 0.6rem auto;
+  }
+  .price-vsep line {
+    stroke: rgba(201, 137, 46, 0.45);
+    stroke-width: 1.5;
+    stroke-dasharray: 4 3;
+  }
+
+  /* Stage 2: promo code gate */
+  .price-stage-2 {
+    position: relative;
+    background: linear-gradient(135deg, rgba(18, 34, 54, 0.9) 0%, rgba(10, 22, 40, 0.95) 100%);
+    border: 1.5px solid var(--brass);
+    padding: 1.5rem 2.25rem 1.4rem;
+    text-align: center;
+    min-width: 320px;
+    box-shadow: 0 0 24px rgba(201, 137, 46, 0.12), inset 0 0 32px rgba(201, 137, 46, 0.04);
+  }
+  /* Corner brackets */
+  .price-stage-2::before,
+  .price-stage-2::after {
+    content: '';
+    position: absolute;
+    width: 16px; height: 16px;
+    border-color: var(--brass-bright);
+    border-style: solid;
+    opacity: 0.7;
+  }
+  .price-stage-2::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+  .price-stage-2::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+  /* Extra corners via inner span */
+  .price-stage-2-inner::before,
+  .price-stage-2-inner::after {
+    content: '';
+    position: absolute;
+    width: 16px; height: 16px;
+    border-color: var(--brass-bright);
+    border-style: solid;
+    opacity: 0.7;
+  }
+  .price-stage-2-inner::before { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+  .price-stage-2-inner::after  { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+  .price-stage-2-inner { position: absolute; inset: 0; pointer-events: none; }
+  .price-code-gate-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(232, 220, 196, 0.48);
+    margin-bottom: 0.75rem;
+  }
+  .price-gate-code-word {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    color: var(--brass-bright);
+    text-transform: uppercase;
+    margin-bottom: 0.85rem;
+    position: relative;
+    display: inline-block;
+  }
+  /* Scan-line shimmer on the gate code */
+  .price-gate-code-word::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(0,0,0,0.12) 3px,
+      rgba(0,0,0,0.12) 4px
+    );
+    pointer-events: none;
+  }
+  .promo-code-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .promo-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.05rem;
+    letter-spacing: 0.18em;
+    color: var(--bone-bright);
+    background: rgba(10, 22, 40, 0.7);
+    border: 1px solid rgba(201, 137, 46, 0.4);
+    padding: 0.45rem 1rem;
+    border-radius: 3px;
+    user-select: all;
+  }
+  .promo-copy {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    color: var(--navy-deep);
+    background: linear-gradient(135deg, var(--brass-bright) 0%, var(--brass) 100%);
+    border: none;
+    padding: 0.48rem 1.15rem;
+    cursor: pointer;
+    border-radius: 3px;
+    text-transform: uppercase;
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 2px 8px rgba(201, 137, 46, 0.35);
+  }
+  .promo-copy:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(201, 137, 46, 0.5); }
+  .promo-copy:active { transform: translateY(0); }
+  /* Tooltip */
+  .promo-copy-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 22, 40, 0.92);
+    border: 1px solid rgba(201, 137, 46, 0.35);
+    color: var(--brass-bright);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    padding: 0.3rem 0.7rem;
+    border-radius: 3px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .promo-copy-tooltip.visible { opacity: 1; }
+  .promo-copy-help {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    color: rgba(232, 220, 196, 0.35);
+    margin-top: 0.7rem;
+    text-transform: uppercase;
+  }
+
+  /* Stage 3: unlocked $17 */
+  .price-stage-3 { text-align: center; padding: 0.5rem 0 1rem; }
+  .price-unlocked-label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brass);
+    opacity: 0.75;
+    margin-bottom: 0.3rem;
+  }
+  .price-now {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--bone-bright);
+    text-shadow:
+      0 0 20px rgba(201, 137, 46, 0.55),
+      0 0 60px rgba(201, 137, 46, 0.25),
+      0 2px 0 rgba(0,0,0,0.5);
+    display: inline-block;
+  }
+  .price-now sup { font-size: 2.8rem; vertical-align: super; }
+  .price-save-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--orange-stamp);
+    color: var(--navy-deep);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 1.4rem;
+    margin-top: 0.75rem;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
+    border-radius: 2px;
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.35);
+  }
+
+  /* price-headline kept as alias for old code references */
+  .price-headline { text-align: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .price-vsep line { animation: none; }
+  }
+
+  /* ============ PRICE TEASER BAR ============ */
+  .price-teaser-bar {
+    background: linear-gradient(135deg, rgba(18, 34, 54, 0.85) 0%, rgba(10, 22, 40, 0.9) 100%);
+    border: 1px solid rgba(201, 137, 46, 0.3);
+    padding: 1.1rem 2rem;
+    text-align: center;
+    margin: 1.5rem auto;
+    max-width: 680px;
+    border-radius: 3px;
+  }
+  .price-teaser-bar a { text-decoration: none; display: inline-flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .price-teaser-bar a:hover .ptb-final { text-shadow: 0 0 18px rgba(201, 137, 46, 0.7); }
+  .ptb-was {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: rgba(232, 220, 196, 0.3);
+    position: relative;
+    display: inline-block;
+  }
+  .ptb-was::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: -2%; width: 104%;
+    height: 2px;
+    background: var(--brass);
+    opacity: 0.65;
+    transform: rotate(-8deg) translateY(-50%);
+    border-radius: 1px;
+  }
+  .ptb-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    color: rgba(201, 137, 46, 0.55);
+    font-size: 0.9rem;
+  }
+  .ptb-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    color: var(--brass-bright);
+    background: rgba(10, 22, 40, 0.6);
+    border: 1px solid rgba(201, 137, 46, 0.35);
+    padding: 0.25rem 0.65rem;
+    border-radius: 2px;
+  }
+  .ptb-final {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--bone-bright);
+    text-shadow: 0 0 12px rgba(201, 137, 46, 0.4);
+    transition: text-shadow 0.2s;
+  }
+  @media (max-width: 580px) {
+    .price-teaser-bar { padding: 0.9rem 1.25rem; }
+    .ptb-was { font-size: 1.25rem; }
+    .ptb-final { font-size: 1.35rem; }
+  }
+
+  /* ============ CHAPTER HOVER PREVIEW ============ */
+  .chapter-preview {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.67rem;
+    letter-spacing: 0.12em;
+    color: var(--brass-bright);
+    background: linear-gradient(0deg, rgba(10, 22, 40, 0.97) 55%, transparent 100%);
+    padding: 1.2rem 2rem 0.8rem;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    border-top: 1px solid rgba(201, 137, 46, 0.22);
+  }
+  .chapter:hover .chapter-preview { opacity: 1; transform: translateY(0); }
+  @media (max-width: 580px) {
+    .chapter-preview { padding: 1rem 1.5rem 0.7rem; }
+  }
+
+  /* ============ SECTION DIVIDERS (SVG topo draw-on) ============ */
+  .section-divider {
+    width: 100%;
+    height: 24px;
+    overflow: visible;
+    padding: 0; margin: 0;
+    line-height: 0;
+  }
+  .section-divider svg { width: 100%; height: 100%; display: block; }
+  .topo-line {
+    stroke: rgba(201, 137, 46, 0.35);
+    stroke-width: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 2800;
+    stroke-dashoffset: 2800;
+    transition: stroke-dashoffset 2.4s ease-in-out;
+  }
+  .section-divider.drawn .topo-line { stroke-dashoffset: 0; }
+
+  /* ============ B1: SECTION TITLE SLIDE-IN ============ */
+  @keyframes title-fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .section-title .line-1,
+  .section-title .line-2,
+  .section-title .line-3 {
+    display: block;
+    opacity: 0;
+  }
+  .section-title.titles-in .line-1 { animation: title-fade-up 0.55s cubic-bezier(0.22,1,0.36,1) forwards; }
+  .section-title.titles-in .line-2 { animation: title-fade-up 0.55s cubic-bezier(0.22,1,0.36,1) 0.12s forwards; }
+  .section-title.titles-in .line-3 { animation: title-fade-up 0.55s cubic-bezier(0.22,1,0.36,1) 0.24s forwards; }
+  @media (prefers-reduced-motion: reduce) {
+    .section-title .line-1,
+    .section-title .line-2,
+    .section-title .line-3 { opacity: 1; animation: none; }
+  }
+
+  /* ============ B2: EYEBROW TYPING ============ */
+  .section-eyebrow .label { display: inline; }
+  .eyebrow-typing .label-text { opacity: 0; }
+  .eyebrow-typing .label-text.typed { opacity: 1; }
+
+  /* ============ B4: FLOATING PARTICLES ============ */
+  .hero-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--brass);
+    pointer-events: none;
+    display: none; /* particles removed */
+  }
+  @keyframes particle-float {
+    0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 0.6; }
+    100% { transform: translateY(-120px) translateX(var(--px-drift)) scale(0.6); opacity: 0; }
+  }
+  @media (max-width: 768px) { .hero-particle { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .hero-particle { display: none; } }
+
+  /* ============ B6: PHRASE HIGHLIGHTS ============ */
+  .phrase-highlight {
+    position: relative;
+    display: inline;
+  }
+  .phrase-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--brass-bright);
+    border-radius: 1px;
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .phrase-highlight.hl-in::after { width: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    .phrase-highlight::after { transition: none; width: 100%; }
+  }
+
+  /* ============ TYPEWRITER CARET ============ */
+  .tw-caret {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--brass-bright);
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    /* animation removed */
+  }
+  @keyframes caret-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  /* ============ MISSION BRIEFING + SCANLINES ============ */
+  .scanlines-overlay {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(0, 0, 0, 0.055) 3px,
+      rgba(0, 0, 0, 0.055) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  .final-cta .container { position: relative; z-index: 1; }
+  .mission-briefing-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.28em;
+    color: var(--orange-stamp);
+    text-align: center;
+    margin-bottom: 2rem;
+    min-height: 1.2em;
+    text-transform: uppercase;
+  }
+
+  /* ============ PRICE RESPONSIVE ============ */
+  @media (max-width: 580px) {
+    .price-was-large { font-size: 2rem; }
+    .price-code-gate { min-width: auto; width: 100%; box-sizing: border-box; }
+    .price-reveal { width: 100%; }
+  }
+  @media (max-width: 400px) {
+    .price-was-large { font-size: 1.7rem; }
+    .price-path-arrow { font-size: 1rem; }
+    .price-code-gate { padding: 0.85rem 1rem; }
+  }
+
+  /* Subtitle instant reveal — replaces JS typewriter */
+  #hero-subtitle-text {
+    opacity: 0;
+    animation: subtitle-reveal 0.7s ease 0.5s forwards;
+    animation-fill-mode: both;
+  }
+  @keyframes subtitle-reveal {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  /* Title reveal — replaces word-wrap JS */
+  h1.hero-title {
+    opacity: 1;
+  }
+
+
+  /* Low-end device / data-saver: kill all animations */
+  @media (prefers-reduced-data: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+  /* Ensure fonts load with swap to prevent invisible text */
+  @font-face { font-display: swap; }
+
+</style>
+
+<!-- ============ STRUCTURED DATA (Product / Book schema) ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "The Invisible Shelter Playbook",
+  "description": "Stay warmer in extreme cold. Stay invisible in a vehicle. Build emergency shelter systems for under $50. Field-tested, documented methods from Survival Mode.",
+  "image": "https://i.imgur.com/gpk2cEt.jpeg",
+  "brand": {
+    "@type": "Brand",
+    "name": "Survival Mode"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "17.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://invisibleshelter.com"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- Scroll progress bar -->
+<div id="scroll-progress" role="progressbar" aria-hidden="true"></div>
+
+<!-- ============ COUNTDOWN BANNER (TOP) ============ -->
+<div class="countdown-banner">
+  <div class="classification-row">
+    <span class="classification-scroll">// FIELD MANUAL &nbsp;·&nbsp; CLASSIFICATION: PUBLIC &nbsp;·&nbsp; AUTHENTICATED: 2026 &nbsp;·&nbsp; DISTRIBUTION: UNRESTRICTED &nbsp;·&nbsp; ISSUE: VOL. 01 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// FIELD MANUAL &nbsp;·&nbsp; CLASSIFICATION: PUBLIC &nbsp;·&nbsp; AUTHENTICATED: 2026 &nbsp;·&nbsp; DISTRIBUTION: UNRESTRICTED &nbsp;·&nbsp; ISSUE: VOL. 01 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </div>
+  <div class="countdown-row">
+    <div class="banner-slot" id="banner-slot">
+      <div class="banner-msg banner-msg-active" id="bmsg-0">
+        ★ USE CODE <span class="banner-code">SURVIVALMODE</span> — CHECKOUT SHOWS $27 · PAY $17
+      </div>
+      <div class="banner-msg" id="bmsg-1">
+        📕 INSTANT PDF DOWNLOAD · 65 PAGES · FIELD EDITION VOL. 01
+      </div>
+      <div class="banner-msg" id="bmsg-2">
+        introductory price · $17 today · price may increase in future editions
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="topo-bg"></div>
+<div class="blueprint-grid"></div>
+<div class="topo-lines"></div>
+<div class="grain"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="topbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo"><span class="dot"></span> SURVIVAL MODE</a>
+    <a href="https://pay.hotmart.com/E106006634U?bid=1779816409335" class="nav-cta" target="_blank" rel="noopener">Get the Playbook</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-stamp">
+          <span class="pulse-dot"></span>
+          <span>Field Edition · Vol. 01 · 2026</span>
+        </div>
+        <h1 class="hero-title">
+          THE INVISIBLE<br />
+          SHELTER<br />
+          <span class="highlight">Playbook</span>
+        </h1>
+        <p class="hero-subtitle" id="hero-subtitle-text">Ray spent 11 months figuring this out in parking lots across three states. You are reading it in an afternoon. For $17.</p>
+
+        <a href="https://pay.hotmart.com/E106006634U?bid=1779816409335" class="btn btn-primary hero-immediate-btn" target="_blank" rel="noopener" style="margin-bottom: 2rem;">
+          Get the Playbook
+          <span class="btn-arrow">→</span>
+        </a>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="num">−20°F</span>
+            <span class="lab">Cold Floor</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="num">$50</span>
+            <span class="lab">Full Kit</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="num">5</span>
+            <span class="lab">Cities Mapped</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="num">8</span>
+            <span class="lab">Chapters</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-book-wrap">
+        <svg class="compass-overlay" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="45" fill="none" stroke="#C9892E" stroke-width="0.5"/>
+          <circle cx="50" cy="50" r="35" fill="none" stroke="#C9892E" stroke-width="0.3"/>
+          <path d="M50 10 L55 50 L50 90 L45 50 Z" fill="#C9892E" opacity="0.6"/>
+          <path d="M10 50 L50 45 L90 50 L50 55 Z" fill="#C9892E" opacity="0.4"/>
+          <text x="50" y="8" text-anchor="middle" fill="#C9892E" font-size="6" font-family="serif">N</text>
+          <text x="50" y="96" text-anchor="middle" fill="#C9892E" font-size="6" font-family="serif">S</text>
+          <text x="6" y="52" text-anchor="middle" fill="#C9892E" font-size="6" font-family="serif">W</text>
+          <text x="94" y="52" text-anchor="middle" fill="#C9892E" font-size="6" font-family="serif">E</text>
+        </svg>
+        <img src="https://i.imgur.com/w6Ni1he.png" alt="The Invisible Shelter Playbook - Field Edition" class="hero-book" loading="eager" decoding="async" fetchpriority="high" />
+        <div class="book-stamp-floating">
+          NEW · 2026
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF BAR ============ -->
+<div class="proof-bar">
+  <div class="container">
+    <div class="proof-grid">
+      <div class="proof-item">
+        <div class="proof-num" data-target="50" data-prefix="$" data-suffix="">$50</div>
+        <div class="proof-label">Replaces $400+ Gear</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num" data-target="20" data-prefix="−" data-suffix="°F">−20°F</div>
+        <div class="proof-label">System Temperature Floor</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num" data-target="7" data-prefix="" data-suffix="">7</div>
+        <div class="proof-label">Stealth Protocol Steps</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num" data-target="0" data-prefix="$" data-suffix="">$0</div>
+        <div class="proof-label">Weekly Food Possible</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICE TEASER -->
+<div class="container">
+  <div class="price-teaser-bar">
+    <a href="#buy" aria-label="Get the playbook for $17 with code SURVIVALMODE">
+      <span class="ptb-was">$27</span>
+      <span class="ptb-arrow">→</span>
+      <span class="ptb-code">SURVIVALMODE</span>
+      <span class="ptb-arrow">→</span>
+      <span class="ptb-final">$17</span>
+    </a>
+  </div>
+</div>
+
+<!-- TOPO DIVIDER -->
+<div class="section-divider"><svg viewBox="0 0 1200 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path class="topo-line" d="M-10,12 L100,12 L112,4 L124,20 L136,4 L148,12 L300,12 L314,6 L328,18 L342,6 L356,12 L540,12 L553,3 L566,21 L579,3 L592,12 L740,12 L752,7 L764,17 L776,7 L788,12 L950,12 L963,5 L976,19 L989,5 L1002,12 L1210,12"/></svg></div>
+
+<!-- ============ COUNTER-INDUSTRY ============ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">
+      <span class="dash"></span>
+      <span class="label">The Reason You've Never Seen This</span>
+    </div>
+    <h2 class="section-title">
+      No industry profits<br />
+      from telling you <span class="italic">the truth.</span>
+    </h2>
+    <p class="section-lead">
+      The methods in this playbook have existed for decades in communities that had no margin for error. The hotel industry generates $218 billion a year. Every vehicle dweller who gets caught and impounded is revenue for the towing industry. The outdoor gear market sells 0°F sleeping bags for $300–500. There is no financial incentive for anyone with a distribution budget to teach what this guide documents. So nobody did. Until this.
+    </p>
+
+    <div class="counter-grid">
+      <div class="counter-card">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="industry">Hotel Industry</div>
+        <div class="value">$218B</div>
+        <h4>Annual U.S. revenue</h4>
+        <p>Zero financial interest in you having a reliable vehicle stealth system. Every detection event sends you to a $65–85/night motel.</p>
+      </div>
+
+      <div class="counter-card">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="industry">Outdoor Gear</div>
+        <div class="value">$16B</div>
+        <h4>REI · Patagonia · North Face</h4>
+        <p>0°F sleeping bags retail $300–$500. The 4-layer system in Chapter 2 performs at the same temperature floor for around $50.</p>
+      </div>
+
+      <div class="counter-card">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="industry">Van Conversion</div>
+        <div class="value">$40K</div>
+        <h4>Pro builds vs. reality</h4>
+        <p>Professional van conversions charge $15K–40K for builds that replicate what Chapter 5 describes for under $300.</p>
+      </div>
+    </div>
+
+    <p class="section-lead" style="max-width: 800px; margin-top: 3rem; margin-bottom: 0;">
+      The towing industry generates $12 billion a year. Every vehicle dweller who gets caught and impounded is revenue. There is no financial incentive for anyone with a distribution budget to teach stealth parking. The gear industry profits when people believe cold survival requires a $400 sleeping bag. The fast food industry profits when people don't know that free food systems exist in every American city. This information does not disappear because it is wrong. It disappears because sharing it has no commercial upside. What follows is what people who could not afford not to know this figured out instead.
+    </p>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INSIDE ============ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">
+      <span class="dash"></span>
+      <span class="label">Table of Contents</span>
+    </div>
+    <h2 class="section-title">
+      Eight chapters.<br />
+      <span class="italic">Every system documented.</span>
+    </h2>
+    <p class="section-lead">
+      Each chapter is a complete operational system — not tips, not theory. The physics, the cost, the failure modes, and the exact steps to implement.
+    </p>
+
+    <div class="chapters-grid">
+      <div class="chapter">
+        <div class="chapter-num">01</div>
+        <div class="chapter-content">
+          <h3>The Stealth System</h3>
+          <p>The system that eliminates knock-and-move-on events. Seven steps, $0 cost, works in any urban area. The LA case file went from 4 detection events in 14 days to zero in 30.</p>
+        </div>
+        <div class="chapter-preview">Setup: $5–8 · Stealth time: 8 min · 5-location rotation</div>
+      </div>
+
+      <div class="chapter chapter-hero">
+        <div class="chapter-num">02</div>
+        <div class="chapter-content">
+          <h3>Extreme Cold · Vehicles</h3>
+          <p>The system that lets you sleep through a Minneapolis November without waking up cold at 3 AM. $47–58 total. Same temperature floor as a $400 sleeping bag — because the physics are identical.</p>
+        </div>
+        <div class="chapter-preview">Floor: −20°F · Full kit: $47–58 · 4-layer system</div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-num">03</div>
+        <div class="chapter-content">
+          <h3>Extreme Cold · Tents</h3>
+          <p>The ground is what kills you — not the air. This chapter explains why and gives you the exact stack that stops ground cold from penetrating regardless of what tent you have.</p>
+        </div>
+        <div class="chapter-preview">Ground stack: 4 layers · Zero-ground moisture method</div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-num">04</div>
+        <div class="chapter-content">
+          <h3>Abandoned Structures</h3>
+          <p>The 10-minute safety assessment protocol. Five danger signs. The order of operations that prevents structural injury.</p>
+        </div>
+        <div class="chapter-preview">Assessment: 10 min · 5 structural danger indicators</div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-num">05</div>
+        <div class="chapter-content">
+          <h3>Van & Vehicle Living</h3>
+          <p>A vehicle interior hits 150°F in direct sun. This chapter solves that without electricity. Full living setup for $199–$321 — including power, cooling, and a system that looks like a work truck from outside.</p>
+        </div>
+        <div class="chapter-preview">Full kit: $199–321 · 150°F heat solved · Free power</div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-num">06</div>
+        <div class="chapter-content">
+          <h3>Food & Water · No Money</h3>
+          <p>The Columbus case file dropped from $63/week on food to $0–4 using the timing sequence in this chapter. Every source is documented. The intelligence already exists — this chapter gives you the schedule.</p>
+        </div>
+        <div class="chapter-preview">Weekly food: $0–5 · 7-day timing sequence</div>
+      </div>
+
+      <div class="chapter">
+        <div class="chapter-num">07</div>
+        <div class="chapter-content">
+          <h3>Power & Connectivity</h3>
+          <p>Phone charged, showered, connected — every day, for free. The 5-point daily operations chain that keeps you functional when every system you relied on is gone.</p>
+        </div>
+        <div class="chapter-preview">5-point daily ops chain · Free connectivity</div>
+      </div>
+
+      <div class="chapter chapter-hero">
+        <div class="chapter-num">08</div>
+        <div class="chapter-content">
+          <h3>The Mental Operating System</h3>
+          <p>Financial scarcity causes a documented 14-point IQ drop. This chapter explains why every decision feels harder than it should — and gives you 7 daily practices to reclaim the bandwidth that crisis takes away.</p>
+        </div>
+        <div class="chapter-preview">IQ impact: −14 pts · 7 rebuild practices</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPO DIVIDER -->
+<div class="section-divider"><svg viewBox="0 0 1200 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path class="topo-line" d="M-10,12 L80,12 L92,5 L104,19 L116,5 L128,12 L310,12 L322,8 L334,16 L346,8 L358,12 L560,12 L574,3 L588,21 L602,3 L616,12 L800,12 L813,6 L826,18 L839,6 L852,12 L1020,12 L1032,5 L1044,19 L1056,5 L1068,12 L1210,12"/></svg></div>
+
+<!-- ============ FIELD SCENARIOS ============ -->
+<section class="scenarios">
+  <div class="container">
+    <div class="section-eyebrow">
+      <span class="dash"></span>
+      <span class="label">Three Composite Field Scenarios</span>
+    </div>
+    <h2 class="section-title">
+      Real conditions.<br />
+      <span class="italic">Real outcomes.</span>
+    </h2>
+    <p class="section-lead">
+      Composite scenarios built from field observations across Minneapolis, Columbus, and Los Angeles. Names illustrative — methods, costs, and results documented.
+    </p>
+
+    <div class="scenario">
+      <div class="scenario-stamp">Field Verified</div>
+      <div class="scenario-header">
+        <div>
+          <div class="scenario-id">CASE FILE · 01</div>
+          <div class="scenario-meta">Minneapolis · November · 2014 Honda Civic</div>
+        </div>
+        <div class="scenario-meta" style="color: var(--brass-bright);">TOTAL COST: $41</div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-col">
+          <h4><span class="status-dot red"></span>Before</h4>
+          <p>Two knock-and-move-on events in one week. Waking consistently at 3–4 AM from cold penetrating through the seat. Temperatures dropping to 5°F overnight. One wool blanket, no insulation, no window coverings.</p>
+        </div>
+        <div class="scenario-col">
+          <h4><span class="status-dot green"></span>What Was Implemented</h4>
+          <p>Chapter 2 complete 4-layer system — cardboard from a Best Buy dumpster, Dollar Tree tarp, $14 thrift store sleeping bag, foam board window inserts, mylar windows. Chapter 1 rotation: five locations across Minneapolis.</p>
+        </div>
+      </div>
+      <div class="scenario-outcome">
+        Minneapolis. November. $41 spent. 30 days. Zero knock-ons. −7°F survived. This is what Chapter 2 looks like when it works.
+      </div>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-stamp">Field Verified</div>
+      <div class="scenario-header">
+        <div>
+          <div class="scenario-id">CASE FILE · 02</div>
+          <div class="scenario-meta">Columbus · 2018 Honda Fit · Female, 27</div>
+        </div>
+        <div class="scenario-meta" style="color: var(--brass-bright);">TOTAL COST: $38</div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-col">
+          <h4><span class="status-dot red"></span>Before</h4>
+          <p>Spending $9–13/day on fast food. Phone dying by 1–2 PM. Library outlet seats always taken when she arrived. A 4-day food gap from Wednesday to Sunday each week. Cash running out by Wednesday.</p>
+        </div>
+        <div class="scenario-col">
+          <h4><span class="status-dot green"></span>What Was Implemented</h4>
+          <p>Chapter 7 library outlet strategy — arrives 8 minutes before opening, scouted outlet seat in periodicals. Chapter 6 timing sequence adapted: day labor breakfast, Open Shelter dinners, bakery day-end asks, church Sundays.</p>
+        </div>
+      </div>
+      <div class="scenario-outcome">
+        Columbus. 6 weeks in. $38 spent. Food cost: $63 a week to $0–4. $147 saved by week four. This is what Chapter 6 and 7 look like when they work.
+      </div>
+    </div>
+
+    <div class="scenario">
+      <div class="scenario-stamp">Field Verified</div>
+      <div class="scenario-header">
+        <div>
+          <div class="scenario-id">CASE FILE · 03</div>
+          <div class="scenario-meta">Los Angeles · Ford Transit · Male, 41</div>
+        </div>
+        <div class="scenario-meta" style="color: var(--brass-bright);">TOTAL COST: $23</div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-col">
+          <h4><span class="status-dot red"></span>Before</h4>
+          <p>Four detection events in 14 days. One interaction with LAPD Pacific Division on Lincoln Boulevard, Venice. Parking on residential streets in Mar Vista and Palms — both subject to LAMC 85.02 enforcement.</p>
+        </div>
+        <div class="scenario-col">
+          <h4><span class="status-dot green"></span>What Was Implemented</h4>
+          <p>Chapter 1 Dead Van Technique — all 7 steps. Cab staged with clipboard, expired badge, work gloves. Shifted to industrial corridors. Five-location rotation. Applied to Safe Parking LA waitlist day 3.</p>
+        </div>
+      </div>
+      <div class="scenario-outcome">
+        Los Angeles. 14 days of detection events. $23 spent. 30 days clean. Safe Parking LA by day 22. This is what Chapter 1 looks like when it works.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CITIES ============ -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">
+      <span class="dash"></span>
+      <span class="label">City Resource Packs</span>
+    </div>
+    <h2 class="section-title">
+      Five cities.<br />
+      <span class="italic">Field intel, verified.</span>
+    </h2>
+    <p class="section-lead">
+      The city packs took longer to research than the rest of the guide combined. Verified addresses. Phone numbers. Legal exemptions by state. Enforcement patterns by neighborhood. Safe parking programs with exact eligibility requirements. The kind of intelligence that normally exists only in the memory of people who have been there — and who had no reason to write it down.
+    </p>
+
+    <div class="cities-grid">
+      <div class="city">
+        <div class="city-code"><span class="city-marker"></span>CITY 01 · CA</div>
+        <h3>Los Angeles</h3>
+        <div class="viewers">175,000+ viewers</div>
+        <ul class="resources">
+          <li>LAMC 85.02 + AB 630 navigation</li>
+          <li>Safe Parking LA · 174 spots</li>
+          <li>The ReFresh Spot · 24/7 shower hub</li>
+          <li>Skid Row meal site map</li>
+        </ul>
+      </div>
+
+      <div class="city">
+        <div class="city-code"><span class="city-marker"></span>CITY 02 · TX</div>
+        <h3>Houston</h3>
+        <div class="viewers">127,000+ viewers</div>
+        <ul class="resources">
+          <li>No statewide vehicle ban</li>
+          <li>Loaves & Fishes relocation status</li>
+          <li>Houston Food Bank network</li>
+          <li>Industrial corridor parking intel</li>
+        </ul>
+      </div>
+
+      <div class="city">
+        <div class="city-code"><span class="city-marker"></span>CITY 03 · FL</div>
+        <h3>Miami · Orlando</h3>
+        <div class="viewers">119,000+ viewers</div>
+        <ul class="resources">
+          <li>HB 1365 vehicle exemption</li>
+          <li>Camillus House daily hours</li>
+          <li>Free LYMMO Orlando route map</li>
+          <li>Hurricane season cooling sites</li>
+        </ul>
+      </div>
+
+      <div class="city">
+        <div class="city-code"><span class="city-marker"></span>CITY 04 · NY</div>
+        <h3>New York City</h3>
+        <div class="viewers">91,000+ viewers</div>
+        <ul class="resources">
+          <li>Staten Island / Queens borough intel</li>
+          <li>Mainchance Drop-In access</li>
+          <li>LinkNYC kiosks · 2,200 locations</li>
+          <li>Grand Central Food Program</li>
+        </ul>
+      </div>
+
+      <div class="city">
+        <div class="city-code"><span class="city-marker"></span>CITY 05 · OH</div>
+        <h3>Columbus · Cleveland</h3>
+        <div class="viewers">79,000+ viewers</div>
+        <ul class="resources">
+          <li>24/7 cold-weather mortality lines</li>
+          <li>Third Shift · pet-friendly walk-in</li>
+          <li>Cosgrove Center · mail + showers</li>
+          <li>Warming center extended hours</li>
+        </ul>
+      </div>
+
+      <div class="city" style="background: linear-gradient(135deg, rgba(229, 90, 43, 0.1) 0%, rgba(18, 34, 54, 0.8) 100%); border-color: var(--orange-stamp);">
+        <div class="city-code" style="color: var(--orange-stamp);"><span class="city-marker"></span>BONUS</div>
+        <h3>+ Reference Cards</h3>
+        <div class="viewers" style="color: var(--brass-bright);">6 quick-access cards</div>
+        <ul class="resources">
+          <li>Cold survival by temperature</li>
+          <li>$50 emergency kit checklist</li>
+          <li>Emergency heat protocol · 10 steps</li>
+          <li>Weekly survival operations planner</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPO DIVIDER -->
+<div class="section-divider"><svg viewBox="0 0 1200 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path class="topo-line" d="M-10,12 L120,12 L133,4 L146,20 L159,4 L172,12 L360,12 L374,7 L388,17 L402,7 L416,12 L600,12 L614,2 L628,22 L642,2 L656,12 L840,12 L854,6 L868,18 L882,6 L896,12 L1060,12 L1074,5 L1088,19 L1102,5 L1116,12 L1210,12"/></svg></div>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-eyebrow">
+      <span class="dash"></span>
+      <span class="label">Common Questions</span>
+    </div>
+    <h2 class="section-title">
+      Before you buy.<br />
+      <span class="italic">Everything answered.</span>
+    </h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What Format Is the Playbook In?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The Invisible Shelter Playbook is delivered as a <strong>downloadable PDF</strong> immediately after purchase. 65 pages. Read it on any device — phone, tablet, computer — or print it for offline use. No app required, no subscription, no monthly fees. Once you have the file, it's yours forever.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Who Is This Playbook For?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Anyone facing or preparing for shelter instability. Vehicle dwellers, tent campers, people in transition, preppers building emergency knowledge, social workers, outreach volunteers, or family members trying to help someone in crisis. The methods are <strong>field-tested under real conditions</strong> — not theoretical. If you've never been homeless but want to understand the survival systems people actually use, this is the most honest document you'll find.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Do the Methods Really Work for $50?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. The full 4-layer cold survival kit (Reference Card 2) is <strong>$53–58 itemized</strong> from Dollar Tree, Walmart, and Army surplus. Cardboard is free from any appliance store. The physics of the system — alternating corrugation, mylar radiation barriers, ground-stack moisture management — performs at the same temperature floor as a $300–500 commercial sleeping bag system. The methods have been used in communities in Minneapolis and Chicago for decades.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>Will This Work in My City?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The core survival systems — stealth, cold insulation, food timing, power chain — work universally. The <strong>City Resource Packs cover 5 cities in detail</strong>: Los Angeles, Houston, Miami/Orlando, NYC, and Columbus/Cleveland. For other cities, the methods still apply — just call 211 for local meal sites, shelters, and warming centers, and apply the same protocols. Future editions will add more cities.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How Do I Use the SURVIVALMODE Discount Code?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Important: the checkout page will show the full price of $27. Enter SURVIVALMODE in the coupon field and the price drops to $17 instantly before you complete payment. You will not be charged $27.</strong> At checkout, enter <strong>SURVIVALMODE</strong> in the promo code field. The price drops from $27 to $17 instantly — a $10 discount applied before you complete payment. The code is active during the launch period and may be removed without notice.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>What's the Refund Policy?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The cold-survival systems in Chapters 2 and 3 are guaranteed. If you build the 4-layer vehicle system or the tent ground stack exactly as documented and the system underperforms, the guarantee applies. For all other content, Hotmart's standard <strong>7-day purchase protection</strong> covers your order — if you're unsatisfied, you can request a refund through the platform within 7 days of purchase.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          <span>How Fast Do I Get the PDF After I Pay?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <p><strong>Instant download.</strong> The moment payment processes, you'll see a download link on the confirmation page and receive a copy by email. If you don't see the email within 5 minutes, check spam, then contact us. No waiting, no shipping, no physical product to lose.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHANNEL CREDIBILITY ============ -->
+<section style="padding: 2rem 0;">
+  <div class="container" style="text-align: center;">
+    <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: rgba(232,220,196,0.75); max-width: 560px; margin: 0 auto; line-height: 1.7;">
+      Survival Mode has documented survival systems for <strong style="color: var(--brass-bright);">591,000+ subscribers</strong> across years of fieldwork. This playbook is the complete written record of everything the channel has covered — and everything it hasn't published yet.
+    </p>
+  </div>
+</section>
+
+<!-- ============ GUARANTEE ============ -->
+<section>
+  <div class="container">
+    <div class="guarantee">
+      <div class="guarantee-seal">FIELD<br/>TESTED<br/>· 2026 ·</div>
+      <h3>The Guarantee</h3>
+      <p>
+The complete 4-layer vehicle system is designed to significantly improve warmth in extreme cold when built exactly as described. The tent ground stack is designed to block ground cold when built exactly as described. Individual results depend on weather, clothing, moisture control, ventilation, and setup quality. If you follow every step and are unsatisfied with the result — the guarantee applies. We are not worried. Nobody who built it right has ever asked.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="buy">
+  <div class="scanlines-overlay"></div>
+  <div class="container">
+    <div class="mission-briefing-tag" id="mission-briefing"></div>
+    <div class="section-eyebrow" style="justify-content: center; display: inline-flex;">
+      <span class="dash"></span>
+      <span class="label">Complete Edition · 2026</span>
+      <span class="dash"></span>
+    </div>
+    <h2>
+      Everything documented.<br />
+      <span class="italic">Yours to apply.</span>
+    </h2>
+    <p class="final-cta-sub">
+      8 chapters · 7-practice Mental Rebuild Protocol · 5 city resource packs · 3 composite field scenarios · 6 reference cards · weekly planner.
+    </p>
+
+    <!-- Big countdown block -->
+    <div class="countdown-block" style="background: rgba(201,137,46,0.06); border: 1px solid rgba(201,137,46,0.25); border-radius: 6px; padding: 1.5rem 2rem; max-width: 620px; margin: 0 auto 2.5rem; text-align: center;">
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brass); margin-bottom: 0.75rem;">Introductory Pricing</p>
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: rgba(232,220,196,0.88); line-height: 1.7; margin: 0;">
+        The playbook is priced at $17 with code <strong style="color: var(--brass-bright);">SURVIVALMODE</strong> during this introductory period. As the guide is updated with new city packs and field data, the price will reflect that. Lock in $17 now.
+      </p>
+    </div>
+
+    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--brass-bright); text-align: center; max-width: 560px; margin: 0 auto 2rem; line-height: 1.6;">
+      The man who built that system in Denver never called it survival. He called it Tuesday.
+    </p>
+    <p style="font-family: 'JetBrains Mono', monospace; font-variant: small-caps; font-size: 0.85rem; color: rgba(232, 220, 196, 0.6); text-align: center; max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.8;">
+      One night in a motel costs $65. This costs $17 and replaces the need for the motel. One detection event costs $185–250 in impound fees. This costs $17 and prevents detection. The math is not complicated.
+    </p>
+
+    <div class="price-reveal">
+      <!-- Stage 1: crossed-out $27 -->
+      <div class="price-stage-1">
+        <span class="price-regular-label">Regular price</span>
+        <div class="price-was-large"><sup>$</sup>27</div>
+      </div>
+
+      <!-- SVG separator -->
+      <svg class="price-vsep" viewBox="0 0 2 48" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="1" y1="0" x2="1" y2="48"/>
+      </svg>
+
+      <!-- Stage 2: promo code gate -->
+      <div class="price-stage-2">
+        <span class="price-stage-2-inner"></span>
+        <div class="price-code-gate-label">Checkout shows $27 — enter this code to pay $17</div>
+        <div class="price-gate-code-word">SURVIVALMODE</div>
+        <div class="promo-code-row">
+          <code class="promo-code" id="promo-code">SURVIVALMODE</code>
+          <button class="promo-copy" onclick="copyPromoCode()" style="position:relative;">
+            <span class="promo-copy-tooltip" id="copy-tooltip">Click to copy</span>
+            <span id="copy-text">COPY</span>
+          </button>
+        </div>
+        <span class="promo-copy-help">Enter at Hotmart checkout · saves $10 instantly</span>
+      </div>
+
+      <!-- SVG separator -->
+      <svg class="price-vsep" viewBox="0 0 2 48" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="1" y1="0" x2="1" y2="48"/>
+      </svg>
+
+      <!-- Stage 3: $17 unlocked price -->
+      <div class="price-stage-3">
+        <span class="price-unlocked-label">You pay</span>
+        <div class="price-now"><sup>$</sup>17</div>
+        <div><div class="price-save-badge">★ SAVE $10</div></div>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: rgba(232, 220, 196, 0.45); text-align: center; margin: 1rem auto 0; max-width: 420px; line-height: 1.7; letter-spacing: 0.02em;">Checkout shows $27. Enter code SURVIVALMODE and pay $17. The discount applies instantly before you complete payment.</p>
+      </div>
+    </div>
+
+    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--brass-bright); text-align: center; margin-bottom: 2rem;">
+      The man who built that system in Denver never called it survival. He called it Tuesday.
+    </p>
+
+    <!-- B5: You'll receive callout -->
+    <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(232, 220, 196, 0.55); text-align: center; margin-bottom: 1.5rem; border: 1px solid rgba(201, 137, 46, 0.2); padding: 0.65rem 1.5rem; display: inline-block; border-radius: 2px; background: rgba(201, 137, 46, 0.04);">
+      You'll receive: The Invisible Shelter Playbook &nbsp;·&nbsp; PDF &nbsp;·&nbsp; 65 pages &nbsp;·&nbsp; Instant download
+    </p>
+
+    <!-- B7: Ready to deploy callout -->
+    <div style="text-align: center; margin-bottom: 1.75rem;">
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.22em; color: var(--brass); text-transform: uppercase; margin: 0 0 0.4rem;">
+        <span style="animation: pulse 1.4s ease-in-out infinite; display: inline-block; margin-right: 0.45em; color: var(--green-go);">●</span>[ READY TO DEPLOY ]
+      </p>
+      <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: rgba(232, 220, 196, 0.55); margin: 0;">
+        Everything in the playbook has been field-tested. Nothing theoretical.
+      </p>
+    </div>
+
+    <a href="https://pay.hotmart.com/E106006634U?bid=1779816409335" class="btn btn-primary btn-massive" target="_blank" rel="noopener">
+      Get the Complete Playbook — $27, use SURVIVALMODE for $17
+      <span class="btn-arrow">→</span>
+    </a>
+    <p style="margin-top: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: rgba(232, 220, 196, 0.55); text-align: center; line-height: 1.6; letter-spacing: 0.02em;">
+      Checkout shows $27 · enter code <strong style="color: var(--brass-bright); letter-spacing: 0.06em;">SURVIVALMODE</strong> · you pay $17 · charged once, instantly
+    </p>
+    <p style="margin-top: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; color: rgba(232, 220, 196, 0.4); text-transform: uppercase;">
+      Instant PDF download · 65 pages · Field Edition Vol. 01
+    </p>
+
+    <!-- Payment trust icons -->
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; align-items: center;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; color: rgba(232, 220, 196, 0.5); text-transform: uppercase;">🔒 Secure Checkout</span>
+      <span style="color: rgba(232, 220, 196, 0.3);">·</span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(232, 220, 196, 0.6); letter-spacing: 0.05em;">VISA · MASTERCARD · PAYPAL · APPLE PAY</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">SURVIVAL MODE</div>
+    <a href="https://www.youtube.com/@SurvivalModeGuide" class="footer-yt">https://www.youtube.com/@SurvivalModeGuide</a>
+    <div class="footer-meta">The Invisible Shelter Playbook · Field Edition · Vol. 01 · 2026</div>
+  </div>
+</footer>
+
+<!-- ============ CODE PILL ============ -->
+<a href="#buy" class="code-pill" id="code-pill" aria-label="Use code SURVIVALMODE for $10 off">
+  <span class="code-pill-star">★</span>
+  <span class="code-pill-text">
+    CODE: <strong>SURVIVALMODE</strong>
+    $10 off at checkout
+  </span>
+  <button class="code-pill-dismiss" id="code-pill-dismiss" aria-label="Dismiss" onclick="event.preventDefault();event.stopPropagation();window.dismissCodePill();">×</button>
+</a>
+
+<!-- ============ STICKY BUY BAR ============ -->
+<div class="sticky-buy-bar" id="sticky-buy-bar">
+  <button class="sticky-close" onclick="dismissStickyBar()" aria-label="Dismiss">×</button>
+  <div class="container sticky-bar-inner">
+    <div class="sticky-left">
+      <div class="sticky-title">The Invisible Shelter Playbook</div>
+      <div class="sticky-subtitle">Field Edition Vol. 01 · PDF · 65 pages</div>
+    </div>
+    <a href="https://pay.hotmart.com/E106006634U?bid=1779816409335" class="btn btn-primary sticky-cta" target="_blank" rel="noopener">
+      Get It Now <span class="btn-arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<script>
+  // ============ REVEAL ON SCROLL ============
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+
+  // ============ COPY PROMO CODE ============
+  function copyPromoCode() {
+    const code = document.getElementById('promo-code').textContent;
+    const btn = document.querySelector('.promo-copy');
+    const copyText = document.getElementById('copy-text');
+    const tooltip = document.getElementById('copy-tooltip');
+
+    const finish = () => {
+      copyText.textContent = '✓ COPIED';
+      btn.classList.add('copied');
+      if (tooltip) { tooltip.textContent = 'Copied!'; tooltip.classList.add('visible'); }
+      setTimeout(() => {
+        copyText.textContent = 'COPY';
+        btn.classList.remove('copied');
+        if (tooltip) { tooltip.textContent = 'Click to copy'; tooltip.classList.remove('visible'); }
+      }, 2000);
+    };
+
+    navigator.clipboard.writeText(code).then(finish).catch(() => {
+      const range = document.createRange();
+      range.selectNode(document.getElementById('promo-code'));
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      finish();
+    });
+  }
+
+  // Countdown removed — soft urgency messaging used instead
+
+  // ============ BANNER MESSAGE ROTATION ============
+  (function () {
+    var msgs = document.querySelectorAll('.banner-msg');
+    if (!msgs.length) return;
+    var current = 0;
+    var paused = false;
+    var slot = document.getElementById('banner-slot');
+
+    // Lock slot height so layout never collapses during transition
+    function lockHeight() {
+      if (slot) slot.style.minHeight = slot.offsetHeight + 'px';
+    }
+    lockHeight();
+    window.addEventListener('resize', lockHeight);
+
+    if (slot) {
+      slot.addEventListener('mouseenter', function () { paused = true; });
+      slot.addEventListener('mouseleave', function () { paused = false; });
+    }
+
+    function rotate() {
+      if (paused) return;
+      var next = (current + 1) % msgs.length;
+      // Fade out current — keep it absolute so slot height stays locked
+      msgs[current].style.transition = 'opacity 0.35s ease';
+      msgs[current].style.opacity = '0';
+      msgs[current].style.position = 'absolute';
+      msgs[current].style.inset = '0';
+      msgs[current].classList.remove('banner-msg-active');
+      // After fade-out completes, snap next in place then fade in
+      setTimeout(function () {
+        msgs[next].style.transition = 'none';
+        msgs[next].style.opacity = '0';
+        msgs[next].style.position = 'relative';
+        msgs[next].style.inset = 'auto';
+        msgs[next].classList.add('banner-msg-active');
+        // Force reflow before starting fade-in
+        void msgs[next].offsetWidth;
+        msgs[next].style.transition = 'opacity 0.35s ease';
+        msgs[next].style.opacity = '1';
+        current = next;
+      }, 380);
+    }
+    setInterval(rotate, 4500);
+  })();
+
+  // ============ FAQ TOGGLE ============
+  function toggleFAQ(button) {
+    const item = button.parentElement;
+    const isOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+    // Open clicked one if it was closed
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Parallax removed — was causing forced reflow on every scroll frame
+
+
+  // ============ B4: FLOATING PARTICLES ============
+  (function () {
+    if (window.matchMedia('(max-width: 768px)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+    var COUNT = 3;
+    for (var i = 0; i < COUNT; i++) {
+      var p = document.createElement('div');
+      p.className = 'hero-particle';
+      var size = (Math.random() * 3 + 1.5).toFixed(1);
+      var left = (Math.random() * 95 + 2).toFixed(1);
+      var top  = (Math.random() * 80 + 10).toFixed(1);
+      var dur  = (Math.random() * 6 + 5).toFixed(1);
+      var delay = (Math.random() * 8).toFixed(1);
+      var drift = ((Math.random() - 0.5) * 40).toFixed(0);
+      p.style.cssText = [
+        'width:' + size + 'px',
+        'height:' + size + 'px',
+        'left:' + left + '%',
+        'top:' + top + '%',
+        'opacity:' + (Math.random() * 0.4 + 0.15).toFixed(2),
+        'animation-duration:' + dur + 's',
+        'animation-delay:-' + delay + 's',
+        '--px-drift:' + drift + 'px'
+      ].join(';');
+      hero.appendChild(p);
+    }
+  })();
+
+  // B6: Section divider — CSS handles this
+
+
+  // B7: Mission briefing — show immediately, no typewriter
+  (function () {
+    var el = document.getElementById('mission-briefing');
+    if (el) el.textContent = '[ MISSION BRIEFING ]';
+  })();
+</script>
+
+</body>
+</html>
