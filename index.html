@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M4P74QF5');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Invisible Shelter Playbook · Field Edition Vol. 01 · Survival Mode</title>
@@ -113,7 +120,7 @@
   /* ============ NAV ============ */
   nav.topbar {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 0; left: 0; right: 0; /* JS will update top */
     z-index: 999;
     background: linear-gradient(180deg, rgba(10,22,40,0.98) 0%, rgba(10,22,40,0.93) 100%);
     border-bottom: 1px solid rgba(201, 137, 46, 0.2);
@@ -1224,8 +1231,7 @@
     letter-spacing: 0.1em;
   }
   /* Push nav down: classification row 22px + countdown row ~58px = 80px */
-  nav.topbar { top: 80px; }
-  body { padding-top: 80px; }
+  /* nav top and body padding set dynamically by JS based on banner height */
   @media (prefers-reduced-motion: reduce) {
     .countdown-row  { animation: none; }
     .countdown-banner .alert-dot { animation: none; }
@@ -2064,6 +2070,12 @@
   /* Ensure fonts load with swap to prevent invisible text */
   @font-face { font-display: swap; }
 
+
+  @media (max-width: 480px) {
+    .banner-slot { font-size: 0.68rem; }
+    .banner-code { font-size: 0.78rem; letter-spacing: 0.08em; }
+  }
+
 </style>
 
 <!-- ============ STRUCTURED DATA (Product / Book schema) ============ -->
@@ -2089,6 +2101,10 @@
 </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4P74QF5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- Scroll progress bar -->
 <div id="scroll-progress" role="progressbar" aria-hidden="true"></div>
@@ -2122,7 +2138,7 @@
 <nav class="topbar">
   <div class="container nav-inner">
     <a href="#" class="nav-logo"><span class="dot"></span> SURVIVAL MODE</a>
-    <a href="https://pay.hotmart.com/E106006634U?bid=1779816409335" class="nav-cta" target="_blank" rel="noopener">Get the Playbook</a>
+    <a href="https://pay.hotmart.com/E106006634U?bid=1779816409335" class="nav-cta" target="_blank" rel="noopener">Get the Playbook Now</a>
   </div>
 </nav>
 
@@ -2143,9 +2159,10 @@
         <p class="hero-subtitle" id="hero-subtitle-text">Ray spent 11 months figuring this out in parking lots across three states. You are reading it in an afternoon. For $17.</p>
 
         <a href="https://pay.hotmart.com/E106006634U?bid=1779816409335" class="btn btn-primary hero-immediate-btn" target="_blank" rel="noopener" style="margin-bottom: 2rem;">
-          Get the Playbook
+          Get the Playbook Now
           <span class="btn-arrow">→</span>
         </a>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: rgba(232,220,196,0.7); text-align: left; margin: 0.5rem 0 0; line-height: 1.6; letter-spacing: 0.02em;"><s style="opacity:0.5;">$27</s> → <strong style="color: var(--brass-bright);">$17</strong> with code <strong style="color: var(--brass-bright); letter-spacing: 0.08em;">SURVIVALMODE</strong> · saves $10</p>
 
         <div class="hero-meta">
           <div class="hero-meta-item">
@@ -2757,7 +2774,7 @@ The complete 4-layer vehicle system is designed to significantly improve warmth 
     </div>
 
     <a href="https://pay.hotmart.com/E106006634U?bid=1779816409335" class="btn btn-primary btn-massive" target="_blank" rel="noopener">
-      Get the Complete Playbook — $27, use SURVIVALMODE for $17
+      Get the Playbook Now
       <span class="btn-arrow">→</span>
     </a>
     <p style="margin-top: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: rgba(232, 220, 196, 0.55); text-align: center; line-height: 1.6; letter-spacing: 0.02em;">
@@ -2804,7 +2821,7 @@ The complete 4-layer vehicle system is designed to significantly improve warmth 
       <div class="sticky-subtitle">Field Edition Vol. 01 · PDF · 65 pages</div>
     </div>
     <a href="https://pay.hotmart.com/E106006634U?bid=1779816409335" class="btn btn-primary sticky-cta" target="_blank" rel="noopener">
-      Get It Now <span class="btn-arrow">→</span>
+      Get the Playbook Now <span class="btn-arrow">→</span>
     </a>
   </div>
 </div>
@@ -2951,6 +2968,23 @@ The complete 4-layer vehicle system is designed to significantly improve warmth 
     var el = document.getElementById('mission-briefing');
     if (el) el.textContent = '[ MISSION BRIEFING ]';
   })();
+
+  // ============ DYNAMIC NAV OFFSET (fixes mobile banner wrap) ============
+  function updateNavOffset() {
+    var banner = document.querySelector('.countdown-banner');
+    var nav = document.querySelector('nav.topbar');
+    if (!banner || !nav) return;
+    var bh = banner.offsetHeight;
+    nav.style.top = bh + 'px';
+    document.body.style.paddingTop = (bh + nav.offsetHeight) + 'px';
+  }
+  updateNavOffset();
+  window.addEventListener('resize', updateNavOffset);
+  // Re-run after fonts load (can change banner height)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(updateNavOffset);
+  }
+
 </script>
 
 </body>
